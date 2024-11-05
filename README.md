@@ -3,6 +3,14 @@
 ## Project Overview
 This application enables users to send audio messages and receive AI-powered responses in real-time. Users can start chatting anonymously and are prompted to log in with Google after 5 messages. The system uses WebSocket connections for real-time communication and integrates with Google's Gemini AI for message processing.
 
+### Screenshots
+#### Before Login
+![Before Login](https://drive.google.com/uc?id=1ZhbLLBZsFnELoiuNoKimMcbOLFZG0E69)
+
+#### After Login
+![After Login](https://drive.google.com/uc?id=17kx-rQ4JlVBina26F17ekkk_OjjkrEnh)
+
+
 ## Technical Stack
 - **Frontend**: Next.js 14 with TypeScript
 - **Backend**: FastAPI (Python)
