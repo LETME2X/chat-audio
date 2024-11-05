@@ -87,7 +87,7 @@ cd chat-audio
 
 3. Create the `.env.local` file:
     ```bash
-    cp .env.local.example .env.local
+    cp .env.example .env.local
     ```
 
 
