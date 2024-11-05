@@ -163,17 +163,10 @@ uvicorn app.main:app --reload
 - User data is isolated and protected.
 
 ### Limitations
-- Audio messages must be in WAV format.
 - Maximum 5 messages for anonymous users.
 - Basic error recovery for WebSocket disconnections.
 - Session merging is one-way only.
 
-### Future Improvements
-1. Support for more audio formats.
-2. Enhanced error handling.
-3. Two-way session merging.
-4. Rate limiting implementation.
-5. Offline message support.
 
 
 
