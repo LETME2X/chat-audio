@@ -95,42 +95,39 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 
 ### 5. Google Cloud Setup
 1. Create a new project in Google Cloud Console.
-2. Enable Gemini API.
+2. Enable the Gemini API.
 3. Create API credentials.
 4. Copy the API key to the backend `.env` file.
 
-
-
 ### 6. Running the Application
 
-1. Start backend server:
-cd backend
-source venv/bin/activate  # For Unix/macOS
-# OR
-venv\Scripts\activate     # For Windows
-uvicorn app.main:app --reload
+1. Start the backend server:
+   ```bash
+   cd backend
+   source venv/bin/activate  # For Unix/macOS
+   venv\Scripts\activate     # For Windows
+   uvicorn app.main:app --reload
+   ```
 
+2. Start the frontend development server:
+   ```bash
+   cd frontend
+   npm run dev
+   ```
 
-
-### 2. Start frontend development server:
-cd frontend
-npm run dev
-
-
-### 3. Access application:
-http://localhost:3000
-
-
+3. Access the application:
+   ```
+   http://localhost:3000
+   ```
 
 ### 7. Testing the Application
-1. Open http://localhost:3000 in your browser
-2. Allow microphone access when prompted
-3. Record and send an audio message
-4. Verify transcription and AI response
-5. Test anonymous chat (up to 5 messages)
-6. Test Google authentication
-7. Verify message persistence in Supabase
-
+1. Open `http://localhost:3000` in your browser.
+2. Allow microphone access when prompted.
+3. Record and send an audio message.
+4. Verify transcription and AI response.
+5. Test anonymous chat (up to 5 messages).
+6. Test Google authentication.
+7. Verify message persistence in Supabase.
 
 ### Features
 - Real-time audio messaging
@@ -143,47 +140,42 @@ http://localhost:3000
 - Real-time communication via WebSocket
 
 
+
 ### Troubleshooting
 1. If WebSocket connection fails:
-   - Verify backend server is running
-   - Check WebSocket URL in frontend .env.local
-   - Ensure CORS settings are correct
+   - Verify backend server is running.
+   - Check WebSocket URL in frontend `.env.local`.
+   - Ensure CORS settings are correct.
 
 2. If database operations fail:
-   - Verify Supabase credentials
-   - Check RLS policies
-   - Verify table structures
+   - Verify Supabase credentials.
+   - Check RLS policies.
+   - Verify table structures.
 
 3. If audio recording fails:
-   - Check microphone permissions
-   - Verify browser compatibility
-   - Check console for errors
-
-
+   - Check microphone permissions.
+   - Verify browser compatibility.
+   - Check console for errors.
 
 ### Security Considerations
-- All sensitive credentials are stored in .env files
-- Database access is protected by RLS policies
-- WebSocket connections are authenticated
-- Temporary sessions are properly managed
-- User data is isolated and protected
-
+- All sensitive credentials are stored in `.env` files.
+- Database access is protected by RLS policies.
+- WebSocket connections are authenticated.
+- Temporary sessions are properly managed.
+- User data is isolated and protected.
 
 ### Limitations
-- Audio messages must be in WAV format
-- Maximum 5 messages for anonymous users
-- Basic error recovery for WebSocket disconnections
-- Session merging is one-way only
-
-
+- Audio messages must be in WAV format.
+- Maximum 5 messages for anonymous users.
+- Basic error recovery for WebSocket disconnections.
+- Session merging is one-way only.
 
 ### Future Improvements
-1. Support for more audio formats
-2. Enhanced error handling
-3. Two-way session merging
-4. Rate limiting implementation
-5. Offline message support
-
+1. Support for more audio formats.
+2. Enhanced error handling.
+3. Two-way session merging.
+4. Rate limiting implementation.
+5. Offline message support.
 
 
 
