@@ -5,10 +5,10 @@ This application enables users to send audio messages and receive AI-powered res
 
 ### Screenshots
 #### Before Login
-<img src="https://drive.google.com/uc?id=1ZhbLLBZsFnELoiuNoKimMcbOLFZG0E69" alt="Before Login" width="600"/>
+<img src="https://drive.google.com/uc?id=1ZhbLLBZsFnELoiuNoKimMcbOLFZG0E69" alt="Before Login" width="800"/>
 
 #### After Login
-<img src="https://drive.google.com/uc?id=17kx-rQ4JlVBina26F17ekkk_OjjkrEnh" alt="After Login" width="600"/>
+<img src="https://drive.google.com/uc?id=17kx-rQ4JlVBina26F17ekkk_OjjkrEnh" alt="After Login" width="800"/>
 
 
 
