@@ -22,8 +22,8 @@ This application enables users to send audio messages and receive AI-powered res
 
 ### 1. Clone Repository
 ```bash
-git clone <repository-url>
-cd audio-chat
+git clone https://github.com/LETME2X/chat-audio.git
+cd chat-audio
 ```
 
 # Real-Time Audio Chat Application
