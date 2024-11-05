@@ -18,7 +18,7 @@ This application enables users to send audio messages and receive AI-powered res
 - Google Cloud account with Gemini API access
 - Git
 
-## Step-by-Step Setup Guide
+### Step-by-Step Setup Guide
 
 ### 1. Clone Repository
 ```bash
