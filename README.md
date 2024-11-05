@@ -24,96 +24,15 @@ This application enables users to send audio messages and receive AI-powered res
 ```bash
 git clone <repository-url>
 cd audio-chat
+```
 
-
+# Real-Time Audio Chat Application
 
 ### 2. Supabase Database Setup
 
 1. Create a new project at [Supabase](https://supabase.com).
 2. Go to the **SQL Editor** in the Supabase dashboard.
-3. Execute the following SQL commands:
-
-```sql
--- 1. Create custom user profile table
-CREATE TABLE user_profiles (
-    id UUID REFERENCES auth.users(id) PRIMARY KEY,
-    email TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    last_seen TIMESTAMP WITH TIME ZONE,
-    temporary_sessions TEXT[]
-);
-ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Users can view their own profile"
-    ON user_profiles FOR SELECT USING (auth.uid() = id);
-CREATE POLICY "Users can update their own profile"
-    ON user_profiles FOR UPDATE USING (auth.uid() = id);
-
--- 2. Create messages table
-CREATE TABLE messages (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    user_id UUID REFERENCES auth.users(id),
-    temp_user_id TEXT,
-    message TEXT,
-    transcription TEXT,
-    analysis TEXT,
-    reply TEXT,
-    is_ai BOOLEAN NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    session_type TEXT CHECK (session_type IN ('temporary', 'logged-in')),
-    status TEXT DEFAULT 'pending',
-    audio_url TEXT,
-    audio_duration INTEGER,
-    audio_format TEXT,
-    processing_time FLOAT
-);
-ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Users can view their own messages"
-    ON messages FOR SELECT
-    USING ((auth.uid() = user_id) OR
-    (temp_user_id IS NOT NULL AND
-    temp_user_id = current_setting('app.temp_user_id', TRUE)));
-CREATE POLICY "Users can insert messages"
-    ON messages FOR INSERT
-    WITH CHECK ((auth.uid() = user_id) OR (temp_user_id IS NOT NULL));
-
--- 3. Create session merges table
-CREATE TABLE session_merges (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    user_id UUID REFERENCES auth.users(id),
-    temp_user_id TEXT NOT NULL,
-    merged_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'completed', 'failed'))
-);
-ALTER TABLE session_merges ENABLE ROW LEVEL SECURITY;
-
--- 4. Create necessary indexes
-CREATE INDEX idx_messages_user_id ON messages(user_id);
-CREATE INDEX idx_messages_temp_user_id ON messages(temp_user_id);
-CREATE INDEX idx_messages_created_at ON messages(created_at);
-CREATE INDEX idx_session_merges_temp_user_id ON session_merges(temp_user_id);
-CREATE INDEX idx_messages_session_type ON messages(session_type);
-CREATE INDEX idx_messages_status ON messages(status);
-CREATE INDEX idx_user_profiles_last_seen ON user_profiles(last_seen);
-
--- 5. Create merge function
-CREATE OR REPLACE FUNCTION merge_temporary_session(
-    p_user_id UUID,
-    p_temp_user_id TEXT
-) RETURNS VOID AS $$
-BEGIN
-    INSERT INTO session_merges (user_id, temp_user_id)
-    VALUES (p_user_id, p_temp_user_id);
-    UPDATE messages
-    SET user_id = p_user_id,
-        session_type = 'logged-in',
-        temp_user_id = NULL
-    WHERE temp_user_id = p_temp_user_id;
-    UPDATE session_merges
-    SET status = 'completed'
-    WHERE user_id = p_user_id AND temp_user_id = p_temp_user_id;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
+3. Execute the following SQL commands from this [link](https://drive.google.com/file/d/1_aw16vugkGBzuYGDOKjq0G3KgAUPubsz/view?usp=sharing).
 
 
 ### 3. Backend Setup
@@ -171,7 +90,7 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 ```dotenv
 NEXT_PUBLIC_SUPABASE_URL=your_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-
+```
 
 
 5. Google Cloud Setup
