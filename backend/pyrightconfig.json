@@ -1,0 +1,9 @@
+{
+    "venvPath": ".",
+    "venv": "venv",
+    "reportMissingImports": false,
+    "pythonPath": "./venv/Scripts/python.exe",
+    "analysis": {
+        "extraPaths": ["./venv/Lib/site-packages"]
+    }
+}
