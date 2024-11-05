@@ -93,7 +93,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 ```
 
 
-5. Google Cloud Setup
+### 5. Google Cloud Setup
 1. Create a new project in Google Cloud Console.
 2. Enable Gemini API.
 3. Create API credentials.
@@ -101,7 +101,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 
 
 
-6. Running the Application
+### 6. Running the Application
 
 1. Start backend server:
 cd backend
@@ -112,17 +112,17 @@ uvicorn app.main:app --reload
 
 
 
-2. Start frontend development server:
+### 2. Start frontend development server:
 cd frontend
 npm run dev
 
 
-3. Access application:
+### 3. Access application:
 http://localhost:3000
 
 
 
-7. Testing the Application
+### 7. Testing the Application
 1. Open http://localhost:3000 in your browser
 2. Allow microphone access when prompted
 3. Record and send an audio message
@@ -132,7 +132,7 @@ http://localhost:3000
 7. Verify message persistence in Supabase
 
 
-Features
+### Features
 - Real-time audio messaging
 - Speech-to-text conversion
 - AI-powered responses
@@ -143,7 +143,7 @@ Features
 - Real-time communication via WebSocket
 
 
-Troubleshooting
+### Troubleshooting
 1. If WebSocket connection fails:
    - Verify backend server is running
    - Check WebSocket URL in frontend .env.local
@@ -161,7 +161,7 @@ Troubleshooting
 
 
 
-Security Considerations
+### Security Considerations
 - All sensitive credentials are stored in .env files
 - Database access is protected by RLS policies
 - WebSocket connections are authenticated
@@ -169,7 +169,7 @@ Security Considerations
 - User data is isolated and protected
 
 
-Limitations
+### Limitations
 - Audio messages must be in WAV format
 - Maximum 5 messages for anonymous users
 - Basic error recovery for WebSocket disconnections
@@ -177,7 +177,7 @@ Limitations
 
 
 
-Future Improvements
+### Future Improvements
 1. Support for more audio formats
 2. Enhanced error handling
 3. Two-way session merging
