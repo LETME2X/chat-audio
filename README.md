@@ -54,7 +54,7 @@ cd chat-audio
 
 4. Create the `.env` file:
     ```bash
-    cp .env.example .env
+    cp .env
     ```
 
 5. Update the `.env` file with your credentials:
@@ -78,7 +78,7 @@ cd chat-audio
 
 3. Create the `.env.local` file:
     ```bash
-    cp .env.local.example .env.local
+    cp .env.local
     ```
 
 
@@ -98,13 +98,14 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 
 ### 6. Running the Application
 
-1. Start the backend server:
-   ```bash
-   cd backend
-   source venv/bin/activate  # For Unix/macOS
-   venv\Scripts\activate     # For Windows
-   uvicorn app.main:app --reload
-   ```
+### Start the Backend Server
+```bash
+cd backend
+source venv/bin/activate  # For Unix/macOS
+venv\Scripts\activate     # For Command Prompt on Windows
+.\venv\Scripts\Activate.ps1  # For PowerShell on Windows
+uvicorn app.main:app --reload
+```
 
 2. Start the frontend development server:
    ```bash
