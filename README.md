@@ -25,9 +25,6 @@ This application enables users to send audio messages and receive AI-powered res
 git clone https://github.com/LETME2X/chat-audio.git
 cd chat-audio
 ```
-
-### Real-Time Audio Chat Application
-
 ### 2. Supabase Database Setup
 
 1. Create a new project at [Supabase](https://supabase.com).
