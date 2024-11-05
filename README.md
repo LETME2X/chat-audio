@@ -63,7 +63,7 @@ cd chat-audio
 
 4. Create the `.env` file:
     ```bash
-    cp .env
+    cp .env.example .env
     ```
 
 5. Update the `.env` file with your credentials:
@@ -87,7 +87,7 @@ cd chat-audio
 
 3. Create the `.env.local` file:
     ```bash
-    cp .env.local
+    cp .env.local.example .env.local
     ```
 
 
