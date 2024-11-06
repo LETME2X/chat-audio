@@ -7,10 +7,7 @@ import time
 import logging
 import google.generativeai as genai
 from dotenv import load_dotenv
-from .supabase import supabase
-import aiohttp
-import asyncio
-from async_timeout import timeout  
+from .supabase import supabase 
 
 #Logging
 logging.basicConfig(level=logging.ERROR)
