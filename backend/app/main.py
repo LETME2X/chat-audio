@@ -146,7 +146,7 @@ async def process_audio_with_gemini(audio_bytes):
                 As a communication coach, provide one specific piece of actionable advice or positive feedback based on the *transcription*. Focus on a single aspect that the speaker could improve or that they did particularly well. Keep it brief, friendly, and conversational. Begin with "Communication Tip:".
 
                 **3. Conversational Response:**
-                Respond to the *transcribed message* in a natural, conversational way, as if you were engaging in a casual dialogue with the speaker.  Your response should be relevant to the content of the transcription and maintain a friendly and engaging tone.
+                Respond ONLY to what you heard in the audio recording. Keep your response natural and conversational, but stick strictly to what the person actually said in their audio message. Don't make assumptions or add information that wasn't in the recording. Be friendly and engaging while ensuring your response directly relates to the specific content of their audio message.
 
                 **Output Format:**
                 ```
