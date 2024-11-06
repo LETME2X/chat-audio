@@ -9,14 +9,14 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 from .supabase import supabase 
 
-#Logging
+# Logging setup 
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
-# Loading environment variables
+# Environment variables loading
 load_dotenv()
 
-# Gemini API key
+# Gemini API key setup
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 app = FastAPI()
@@ -48,7 +48,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Status values matching database enum
+# Database enum ke hisaab se status values
 STATUS = {
     'INITIAL': 'received',
     'PENDING': 'processing',
@@ -173,7 +173,7 @@ async def process_audio_with_gemini(audio_bytes):
         
         if response and hasattr(response, 'text') and response.text:
             text = response.text.strip().replace('```', '').strip()
-            
+            # Teeno sections ke liye result dictionary
             result = {
                 'transcription': '',
                 'analysis': '',
@@ -193,7 +193,7 @@ async def process_audio_with_gemini(audio_bytes):
                 response_part = text.split('---RESPONSE---')[1].strip()
                 result['reply'] = response_part.replace('```', '').strip()
             
-            # Validating that we have content
+            # content there or not
             if not any(value.strip() for value in result.values()):
                 logger.error("No content found in parsed sections")
                 return None
