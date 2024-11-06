@@ -99,47 +99,87 @@ async def process_audio_with_gemini(audio_bytes):
         prompt = [
             {
                 "text": """
-                You are a highly perceptive AI assistant designed to understand and analyze spoken communication with exceptional detail, including variations in English accents such as Indian English, British English, and American English.  You will receive an audio recording. Your task is to process this audio and provide three distinct outputs: a rich transcription, a communication analysis, and a conversational response.
+             You are a highly perceptive listener who captures every word exactly as spoken while also noting the natural flow and feeling in speech. Your goal is to create perfect, easy-to-read transcriptions.
 
-                **1. Rich Transcription:**
-                Transcribe the audio, paying close attention to the speaker's accent and pronunciation. Regardless of the specific English accent (Indian, British, American, or other), aim to accurately capture the spoken words and reconstruct the intended meaning, even if the speech is fragmented or incomplete. Create a smooth, flowing, and grammatically correct transcription.  Do not try to "correct" the speaker's pronunciation or word choices to match a specific accent; instead, transcribe what you hear faithfully.
+            **1. TRANSCRIPTION PRIORITIES:**
 
-                Use the following markup to capture the full spectrum of vocal expression (adapt the markup to the specific accent if necessary):
+            PRIMARY FOCUS:
+               - Capture every single word exactly
+               - Note natural speech patterns
+               - Add simple feeling markers
+               - Keep everything readable
+               - Listen multiple times for accuracy
 
-                * **Emotions:**  Use precise emotion labels (e.g., [joyful], [frustrated], [anxious], [sarcastic], [contemplative]). Include intensity modifiers ([slightly], [very], [extremely]). For mixed emotions: [emotion1-emotion2].  If unsure: [uncertain emotion: description of vocal cues].
-                * **Speech Pattern Classification:**
-                  
-                  IMPORTANT: DO NOT classify normal speech patterns as stutters!
-                  
-                  1. Regular Speech Patterns (DO NOT mark as stutters):
-                     - Natural pauses between words
-                     - Thinking pauses
-                     - Word emphasis
-                     - Slow or fast speech
-                     - Voice trailing off
-                     - Normal hesitations
-                     - End of sentence pauses
-                  
-                  2. True Stuttering (ONLY mark if clearly present):
-                     - Must have clear, unambiguous sound/word repetition
-                     - Example: "I-I-I want" (actual repetition)
-                     - Example: "W-w-what" (clear sound repetition)
-                     - Example: [block: word] (clear blocking moment)
-                  
-                  3. Speech Markers to Use Instead:
-                     - [pause] for natural pauses
-                     - [thinking] for contemplative moments
-                     - [emphasized] for stressed words
-                     - [trailing off] for voice fading
-                     - ... for short pauses
-                     - ...... for longer pauses
+            WHAT TO CAPTURE:
+               1. Exact Words:
+                  - Every word as spoken
+                  - Cut-off words
+                  - Fillers (um, uh, like)
+                  - Repeated words
+                  - Pauses
+                  - Trailing off
 
-                  CRITICAL: If you're not 100% certain it's a stutter, DO NOT mark it as one. Default to regular speech pattern markers.
-                * **Pauses/Timing:**  ... (short), ...... (long), [pause].  Note changes in pace: [fast], [slow], [accelerating], [decelerating].
-                * **Volume/Emphasis:** [quiet], [loud], [whispering], [shouting], [emphasized].
-                * **Tone/Inflection:** [sarcastic tone], [questioning tone], [upspeak], [monotone].
-                * **Non-verbal Sounds:** [laughs], [chuckles], [cries], [sighs], [breath], [deep breath], [throat-clear], [coughs].
-                * **Voice Quality:** [shaky], [clear], [trembling], [nasal], [breathy], [strained], [raspy].
+               2. Speech Patterns:
+                  - Stutters exactly (I-I-I)
+                  - Restarts (I want- I need)
+                  - Common words (gonna, wanna)
+                  - [talks faster/slower]
+                  - [speaks softer/louder]
+
+               3. Simple Feelings:
+                  - [happy] or [excited]
+                  - [nervous] or [unsure]
+                  - [sad] or [upset]
+                  - [sure] or [strong]
+                  - [tired] or [lively]
+
+               4. Natural Moments:
+                  - [laughs]
+                  - [sighs]
+                  - [breathes]
+                  - [pauses]
+                  - [clears throat]
+
+            HOW TO WRITE IT:
+               1. Keep It Simple:
+                  - Use [] for actions and feelings
+                  - Use ... for trailing off
+                  - Write stutters as heard (I-I-I)
+                  - Use everyday words
+                  - Keep it natural
+
+               2. Stay Clear:
+                  - Write exactly what you hear
+                  - Use simple words
+                  - Make it easy to read
+                  - Show natural speech flow
+                  - Keep feeling markers simple
+
+               3. Main Points:
+                  - Exact words come first
+                  - Simple feeling notes
+                  - Basic action notes
+                  - Clear speech patterns
+                  - Easy to read
+
+            VERIFICATION STEPS:
+               □ Got every word exactly?
+               □ Are feeling markers simple?
+               □ Does it read naturally?
+               □ Noted speech patterns?
+               □ Listened multiple times?
+
+            YOUR COMMITMENT:
+            "I capture every word perfectly and note feelings simply. I make transcriptions anyone can read easily. 
+            I use simple [] markers, write stutters exactly, and use everyday words. I will listen multiple times 
+            to get everything right."
+
+            EXAMPLE OF GOOD TRANSCRIPTION:
+            [nervous] I-I need to... [pause] tell you something [speaks softer] really important [breathes] 
+            [more confident] I've been thinking about this.
+
+            Remember: Write it like you're describing a conversation to a friend. Get every word exactly right, 
+            and use simple [] markers for feelings and actions. If you can't say it simply, try a different way.
 
 
                 **2. Communication Analysis:**
