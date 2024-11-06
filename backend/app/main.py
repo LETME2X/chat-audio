@@ -173,7 +173,7 @@ async def process_audio_with_gemini(audio_bytes):
             }
         ]
 
-        response = model.generate_content(prompt)
+        response = model.generate_content(prompt)#calling api one time only
         
         if response and hasattr(response, 'text') and response.text:
             text = response.text.strip().replace('```', '').strip()
