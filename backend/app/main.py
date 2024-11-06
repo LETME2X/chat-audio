@@ -12,14 +12,14 @@ import aiohttp
 import asyncio
 from async_timeout import timeout  
 
-# Set up logging
+#Logging
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
-# Load environment variables
+# Loading environment variables
 load_dotenv()
 
-# Configure Gemini
+# Gemini API key
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 app = FastAPI()
@@ -27,7 +27,6 @@ app = FastAPI()
 def process_audio_data(audio_base64: str) -> bytes:
     """Convert base64 audio data to bytes."""
     try:
-        # Remove the data URL prefix if present
         if 'base64,' in audio_base64:
             audio_base64 = audio_base64.split('base64,')[1]
         return base64.b64decode(audio_base64)
@@ -197,7 +196,7 @@ async def process_audio_with_gemini(audio_bytes):
                 response_part = text.split('---RESPONSE---')[1].strip()
                 result['reply'] = response_part.replace('```', '').strip()
             
-            # Validate that we have content
+            # Validating that we have content
             if not any(value.strip() for value in result.values()):
                 logger.error("No content found in parsed sections")
                 return None
@@ -241,7 +240,7 @@ async def websocket_endpoint(websocket: WebSocket):
                             'analysis': result['analysis']
                         })
                         
-                        # Store user message
+                        # Storing user message
                         await store_message({
                             'user_id': data.get('userId'),
                             'temp_user_id': data.get('tempUserId'),
@@ -257,7 +256,7 @@ async def websocket_endpoint(websocket: WebSocket):
                             'processing_time': time.time() - start_time
                         })
                         
-                        # Send AI reply separately
+                        # AI reply separately
                         if result.get('reply'):
                             await websocket.send_json({
                                 'type': 'ai_reply',
